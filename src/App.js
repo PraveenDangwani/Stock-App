@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
+import React, {  useState } from "react";
 import './App.css';
+import Quotes from "./Quotes";
+// import { Route, Switch, useLocation,Link } from "wouter"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Instruments from "./Instruments";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+const [quote, setQuote] = useState()
+
+  return(
+    <>
+    <h1>Stock App</h1>
+    <Routes>
+          <Route path="Quotes" element={<Quotes quote={quote}  />} />
+          <Route path="/" element={<Instruments setQuote={setQuote} />} />
+          
+      </Routes>
+    </>
   );
 }
 
